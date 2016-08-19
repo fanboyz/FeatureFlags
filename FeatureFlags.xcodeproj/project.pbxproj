@@ -21,6 +21,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5A15421F1D66FA1200267B95 /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A15421E1D66FA1200267B95 /* FeatureTests.swift */; };
+		5A1542211D66FA9B00267B95 /* FeatureFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1542201D66FA9B00267B95 /* FeatureFlagTests.swift */; };
+		5A1542231D66FCE000267B95 /* FeatureFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1542221D66FCE000267B95 /* FeatureFlagsTests.swift */; };
 		5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83270D1D65E88F00D21D95 /* AppDelegate.swift */; };
 		5A8327131D65E88F00D21D95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327111D65E88F00D21D95 /* Main.storyboard */; };
 		5A8327151D65E88F00D21D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327141D65E88F00D21D95 /* Assets.xcassets */; };
@@ -32,7 +35,6 @@
 		5A8327411D65EB1500D21D95 /* PlistFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB254201D65CD5C004F88A6 /* PlistFeatureFlagPersister.swift */; };
 		5A8327421D65EB1500D21D95 /* FeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC2E1D65D6E9005D77C5 /* FeatureFlagFetcher.swift */; };
 		5A8327431D65EB1500D21D95 /* FeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC301D65D703005D77C5 /* FeatureFlagPersister.swift */; };
-		5A8327441D65EB1500D21D95 /* FeatureFlagsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC341D65D772005D77C5 /* FeatureFlagsLocation.swift */; };
 		5A8327451D65EB1500D21D95 /* FlagValueFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC371D65D807005D77C5 /* FlagValueFetcher.swift */; };
 		5A8327471D65F85C00D21D95 /* MergingFeaturePersisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8327461D65F85C00D21D95 /* MergingFeaturePersisterTests.swift */; };
 		5A8327491D65F86700D21D95 /* MergingFeaturePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8327481D65F86700D21D95 /* MergingFeaturePersister.swift */; };
@@ -44,7 +46,6 @@
 		5A8327521D6619E000D21D95 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8327501D6619E000D21D95 /* FeatureFlags.swift */; };
 		5A97BC2F1D65D6E9005D77C5 /* FeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC2E1D65D6E9005D77C5 /* FeatureFlagFetcher.swift */; };
 		5A97BC311D65D703005D77C5 /* FeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC301D65D703005D77C5 /* FeatureFlagPersister.swift */; };
-		5A97BC361D65D772005D77C5 /* FeatureFlagsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC341D65D772005D77C5 /* FeatureFlagsLocation.swift */; };
 		5A97BC391D65D807005D77C5 /* FlagValueFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC371D65D807005D77C5 /* FlagValueFetcher.swift */; };
 		5A97BC3B1D65D865005D77C5 /* FlagValueFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC3A1D65D865005D77C5 /* FlagValueFetcherTests.swift */; };
 		5A97BC3D1D65D8D9005D77C5 /* MockFeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97BC3C1D65D8D9005D77C5 /* MockFeatureFlagFetcher.swift */; };
@@ -70,6 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A15421E1D66FA1200267B95 /* FeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
+		5A1542201D66FA9B00267B95 /* FeatureFlagTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagTests.swift; sourceTree = "<group>"; };
+		5A1542221D66FCE000267B95 /* FeatureFlagsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsTests.swift; sourceTree = "<group>"; };
 		5A83270B1D65E88F00D21D95 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A83270D1D65E88F00D21D95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A8327121D65E88F00D21D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,7 +90,6 @@
 		5A8327501D6619E000D21D95 /* FeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
 		5A97BC2E1D65D6E9005D77C5 /* FeatureFlagFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagFetcher.swift; sourceTree = "<group>"; };
 		5A97BC301D65D703005D77C5 /* FeatureFlagPersister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagPersister.swift; sourceTree = "<group>"; };
-		5A97BC341D65D772005D77C5 /* FeatureFlagsLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsLocation.swift; sourceTree = "<group>"; };
 		5A97BC371D65D807005D77C5 /* FlagValueFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagValueFetcher.swift; sourceTree = "<group>"; };
 		5A97BC3A1D65D865005D77C5 /* FlagValueFetcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagValueFetcherTests.swift; sourceTree = "<group>"; };
 		5A97BC3C1D65D8D9005D77C5 /* MockFeatureFlagFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFeatureFlagFetcher.swift; sourceTree = "<group>"; };
@@ -170,12 +173,11 @@
 			children = (
 				5AB254331D65D4E0004F88A6 /* FeatureFlags.h */,
 				5AB253FD1D65C230004F88A6 /* Info.plist */,
+				5A8327501D6619E000D21D95 /* FeatureFlags.swift */,
 				5A83274D1D660CCE00D21D95 /* Feature.swift */,
 				5AB254131D65C41C004F88A6 /* FeatureFlag.swift */,
 				5A97BC2E1D65D6E9005D77C5 /* FeatureFlagFetcher.swift */,
 				5A97BC301D65D703005D77C5 /* FeatureFlagPersister.swift */,
-				5A8327501D6619E000D21D95 /* FeatureFlags.swift */,
-				5A97BC341D65D772005D77C5 /* FeatureFlagsLocation.swift */,
 				5A97BC371D65D807005D77C5 /* FlagValueFetcher.swift */,
 				5A8327481D65F86700D21D95 /* MergingFeaturePersister.swift */,
 				5AB254181D65C5DC004F88A6 /* PlistFeatureFlagFetcher.swift */,
@@ -190,6 +192,9 @@
 				5AB254081D65C230004F88A6 /* Info.plist */,
 				5AB254161D65C58A004F88A6 /* TestFeatureFlags.plist */,
 				5AB2541E1D65CA82004F88A6 /* TestPartialFeatureFlags.plist */,
+				5A1542221D66FCE000267B95 /* FeatureFlagsTests.swift */,
+				5A15421E1D66FA1200267B95 /* FeatureTests.swift */,
+				5A1542201D66FA9B00267B95 /* FeatureFlagTests.swift */,
 				5A97BC3A1D65D865005D77C5 /* FlagValueFetcherTests.swift */,
 				5A8327461D65F85C00D21D95 /* MergingFeaturePersisterTests.swift */,
 				5A97BC3C1D65D8D9005D77C5 /* MockFeatureFlagFetcher.swift */,
@@ -373,7 +378,6 @@
 				5A8327401D65EB1500D21D95 /* PlistFeatureFlagFetcher.swift in Sources */,
 				5A8327511D6619E000D21D95 /* FeatureFlags.swift in Sources */,
 				5A83273F1D65EB1500D21D95 /* FeatureFlag.swift in Sources */,
-				5A8327441D65EB1500D21D95 /* FeatureFlagsLocation.swift in Sources */,
 				5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */,
 				5A8327421D65EB1500D21D95 /* FeatureFlagFetcher.swift in Sources */,
 				5A8327411D65EB1500D21D95 /* PlistFeatureFlagPersister.swift in Sources */,
@@ -390,7 +394,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AB254231D65CD79004F88A6 /* PlistFeatureFlagPersister.swift in Sources */,
+				5A15421F1D66FA1200267B95 /* FeatureTests.swift in Sources */,
+				5A1542211D66FA9B00267B95 /* FeatureFlagTests.swift in Sources */,
 				5A8327471D65F85C00D21D95 /* MergingFeaturePersisterTests.swift in Sources */,
+				5A1542231D66FCE000267B95 /* FeatureFlagsTests.swift in Sources */,
 				5A83274C1D6607F200D21D95 /* MockFeatureFlagPersister.swift in Sources */,
 				5AB2541D1D65C687004F88A6 /* PlistFeatureFlagFetcherTests.swift in Sources */,
 				5A97BC3D1D65D8D9005D77C5 /* MockFeatureFlagFetcher.swift in Sources */,
@@ -411,7 +418,6 @@
 				5A97BC311D65D703005D77C5 /* FeatureFlagPersister.swift in Sources */,
 				5A83274F1D660CCE00D21D95 /* Feature.swift in Sources */,
 				5AB254521D65D512004F88A6 /* FeatureFlag.swift in Sources */,
-				5A97BC361D65D772005D77C5 /* FeatureFlagsLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +644,7 @@
 				5A83271C1D65E88F00D21D95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A97BC421D65DC1F005D77C5 /* Build configuration list for PBXAggregateTarget "Universal" */ = {
 			isa = XCConfigurationList;

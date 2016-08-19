@@ -6,7 +6,7 @@
 
 import Foundation
 
-public struct Feature {
+public struct Feature: Equatable {
     public let key: String
     public let name: String
     

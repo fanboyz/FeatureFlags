@@ -6,15 +6,15 @@
 
 import Foundation
 
-public class PlistFeatureFlagFetcher: FeatureFlagFetcher {
+class PlistFeatureFlagFetcher: FeatureFlagFetcher {
     
     private let file: NSURL
     
-    public init(file: NSURL) {
+    init(file: NSURL) {
         self.file = file
     }
     
-    public func fetch() -> [FeatureFlag] {
+    func fetch() -> [FeatureFlag] {
         guard let array = NSArray(contentsOfURL: file) else { return [] }
         return array.flatMap(toDictionary)
                     .flatMap(toFeatureFlag)

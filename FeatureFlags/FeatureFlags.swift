@@ -6,21 +6,22 @@
 
 import Foundation
 
-public protocol FeatureFlagsDataStore: class {
+public protocol FeatureFlagsDelegate: class {
+    var sharedFeatureFlagFile: NSURL { get }
     var features: [Feature] { get }
 }
 
-public class FeatureFlagsLauncher {
+public class FeatureFlags {
     
     private let flagFetcher: FlagValueFetcher
     
-    public init(dataStore: FeatureFlagsDataStore) {
-        let sharedFile = FeatureFlagsLocation.defaultLocation!
+    public init(delegate: FeatureFlagsDelegate) {
+        let sharedFile = delegate.sharedFeatureFlagFile
         let fetcher = PlistFeatureFlagFetcher(file: sharedFile)
         let persister = PlistFeatureFlagPersister(file: sharedFile)
         let merger = MergingFeaturePersister(fetcher: fetcher, persister: persister)
         flagFetcher = FlagValueFetcher(fetcher: fetcher)
-        merger.persist(dataStore.features)
+        merger.persist(delegate.features)
     }
     
     public func value(forFlag flag: String) -> Bool {

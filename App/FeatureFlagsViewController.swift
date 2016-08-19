@@ -35,7 +35,7 @@ class FeatureFlagsViewController: UIViewController {
     }
     
     private func load() {
-        guard let file = FeatureFlagsLocation.defaultLocation else {
+        guard let file = sharedFile else {
             showError()
             return
         }
@@ -54,6 +54,10 @@ class FeatureFlagsViewController: UIViewController {
         let alert = UIAlertController(title: "Error", message: "Not allowed access to the shared group directory.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    private var sharedFile: NSURL? {
+        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.riseproject.featureflags")?.URLByAppendingPathComponent("featureFlags.plist")
     }
 }
 

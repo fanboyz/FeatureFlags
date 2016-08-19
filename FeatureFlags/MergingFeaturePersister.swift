@@ -6,17 +6,17 @@
 
 import Foundation
 
-public class MergingFeaturePersister {
+class MergingFeaturePersister {
     
     private let fetcher: FeatureFlagFetcher
     private let persister: FeatureFlagPersister
     
-    public init(fetcher: FeatureFlagFetcher, persister: FeatureFlagPersister) {
+    init(fetcher: FeatureFlagFetcher, persister: FeatureFlagPersister) {
         self.fetcher = fetcher
         self.persister = persister
     }
     
-    public func persist(features: [Feature]) {
+    func persist(features: [Feature]) {
         persister.persist(features.map(toFeatureFlag))
     }
     

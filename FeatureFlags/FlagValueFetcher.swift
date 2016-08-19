@@ -6,15 +6,15 @@
 
 import Foundation
 
-public class FlagValueFetcher {
+class FlagValueFetcher {
     
     private let fetcher: FeatureFlagFetcher
     
-    public init(fetcher: FeatureFlagFetcher) {
+    init(fetcher: FeatureFlagFetcher) {
         self.fetcher = fetcher
     }
     
-    public func fetchValue(forFlag flag: String) -> Bool? {
+    func fetchValue(forFlag flag: String) -> Bool? {
         let features = fetcher.fetch()
         return features.filter(matching(flag)).first?.value
     }

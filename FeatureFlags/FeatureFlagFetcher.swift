@@ -6,6 +6,6 @@
 
 import Foundation
 
-public protocol FeatureFlagFetcher {
+protocol FeatureFlagFetcher {
     func fetch() -> [FeatureFlag]
 }

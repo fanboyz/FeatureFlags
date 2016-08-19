@@ -6,6 +6,6 @@
 
 import Foundation
 
-public protocol FeatureFlagPersister {
+protocol FeatureFlagPersister {
     func persist(featureFlags: [FeatureFlag])
 }
