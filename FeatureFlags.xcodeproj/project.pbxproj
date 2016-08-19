@@ -365,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash -e";
-			shellScript = "function build {\n    xcrun xcodebuild -project FeatureFlags.xcodeproj -scheme FeatureFlags -destination \"${1}\" clean build ONLY_ACTIVE_ARCH=NO BUILD_DIR=build\n}\n\nFRAMEWORK_NAME=FeatureFlags\nbuild \"platform=iOS Simulator,name=iPhone 6,OS=9.3\"\nbuild \"generic/platform=iOS\"\nrm -r products\nmkdir products\ncp -r build/Debug-iphoneos/* products\nxcrun lipo -create build/Debug-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME} build/Debug-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME} -output products/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\ncp -r build/Debug-iphonesimulator/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule products/${FRAMEWORK_NAME}.framework/Modules\n";
+			shellScript = "function build {\n    xcrun xcodebuild -project FeatureFlags.xcodeproj -scheme FeatureFlags -destination \"${1}\" clean build ONLY_ACTIVE_ARCH=NO BUILD_DIR=build\n}\n\nFRAMEWORK_NAME=FeatureFlags\nbuild \"platform=iOS Simulator,name=iPhone 6,OS=9.3\"\nbuild \"generic/platform=iOS\"\nif [ ! -d products ]; then\n  mkdir products\nfi\ncp -r build/Debug-iphoneos/* products\nxcrun lipo -create build/Debug-iphoneos/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME} build/Debug-iphonesimulator/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME} -output products/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}\ncp -r build/Debug-iphonesimulator/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule products/${FRAMEWORK_NAME}.framework/Modules\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
