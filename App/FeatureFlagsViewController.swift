@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import FeatureFlagsUI
 
 class FeatureFlagsViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
-    private var featureFlags = [FeatureFlag]()
-    private var featureFlagFile: NSURL!
-    private var fetcher: FeatureFlagFetcher!
-    private var persister: FeatureFlagPersister!
+    private var featureFlagsUI: FeatureFlagsUI!
+    private var featureFlags = [FeatureFlag]() {
+        didSet { tableView.reloadData() }
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,15 +40,14 @@ class FeatureFlagsViewController: UIViewController {
             showError()
             return
         }
-        fetcher = PlistFeatureFlagFetcher(file: file)
-        persister = PlistFeatureFlagPersister(file: file)
-        featureFlags = fetcher.fetch()
+        featureFlagsUI = FeatureFlagsUI(sharedFeatureFlagFile: file)
+        featureFlags = featureFlagsUI.fetch()
         tableView.reloadData()
     }
     
     private func change(value value: Bool, atIndex index: Int) {
         featureFlags[index].value = value
-        persister.persist(featureFlags)
+        featureFlagsUI.persist(featureFlags)
     }
     
     private func showError() {

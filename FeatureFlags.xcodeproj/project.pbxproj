@@ -52,6 +52,8 @@
 		5A2E5A4F1D6AF2EC006AE99A /* FeatureFlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4E1D6AF2EC006AE99A /* FeatureFlagsViewController.swift */; };
 		5A2E5A511D6AF331006AE99A /* FeatureFlagsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A501D6AF331006AE99A /* FeatureFlagsUI.swift */; };
 		5A2E5A531D6AF344006AE99A /* FeatureFlagsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A521D6AF344006AE99A /* FeatureFlagsUITests.swift */; };
+		5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2B1D6AF238006AE99A /* MockFeatureFlagFetcher.swift */; };
+		5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2C1D6AF238006AE99A /* MockFeatureFlagPersister.swift */; };
 		5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83270D1D65E88F00D21D95 /* AppDelegate.swift */; };
 		5A8327131D65E88F00D21D95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327111D65E88F00D21D95 /* Main.storyboard */; };
 		5A8327151D65E88F00D21D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327141D65E88F00D21D95 /* Assets.xcassets */; };
@@ -324,10 +326,10 @@
 		5A83270C1D65E88F00D21D95 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E5A4E1D6AF2EC006AE99A /* FeatureFlagsViewController.swift */,
 				5A8327221D65E96400D21D95 /* App.entitlements */,
-				5A8327251D65E9DD00D21D95 /* SwitchCell.swift */,
 				5A83270D1D65E88F00D21D95 /* AppDelegate.swift */,
+				5A2E5A4E1D6AF2EC006AE99A /* FeatureFlagsViewController.swift */,
+				5A8327251D65E9DD00D21D95 /* SwitchCell.swift */,
 				5A8327111D65E88F00D21D95 /* Main.storyboard */,
 				5A8327141D65E88F00D21D95 /* Assets.xcassets */,
 				5A8327161D65E88F00D21D95 /* LaunchScreen.storyboard */,
@@ -609,7 +611,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */,
 				5A2E5A531D6AF344006AE99A /* FeatureFlagsUITests.swift in Sources */,
+				5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,7 +709,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Resources/FeatureFlagsUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -726,7 +729,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Resources/FeatureFlagsUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -741,7 +743,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Resources/FeatureFlagsUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -752,7 +753,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Resources/FeatureFlagsUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

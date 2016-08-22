@@ -10,21 +10,46 @@ import XCTest
 class FeatureFlagsUITests: XCTestCase {
     
     var ui: FeatureFlagsUI!
-    
+    var mockedFetcher: MockFeatureFlagFetcher!
+    var mockedPersister: MockFeatureFlagPersister!
+    let file =
+    NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
+
     override func setUp() {
         super.setUp()
-        ui = FeatureFlagsUI()
+        mockedFetcher = MockFeatureFlagFetcher()
+        mockedPersister = MockFeatureFlagPersister()
+        ui = FeatureFlagsUI(fetcher: mockedFetcher, persister: mockedPersister)
+    }
+
+    // MARK: - init(sharedFeatureFlagFile:)
+
+    func test_init_shouldCreatePlistFetcherAndPersister() {
+        ui = FeatureFlagsUI(sharedFeatureFlagFile: file)
+        XCTAssert(ui.fetcher is PlistFeatureFlagFetcher)
+        XCTAssert(ui.persister is PlistFeatureFlagPersister)
     }
     
-    // MARK: - fetchFeatureFlags
+    // MARK: - fetch
     
-    func test_fetchFeatureFlags_shouldFetchFeatureFlags() {
-        XCTAssertEqual(ui.fetchFeatureFlags(), expected())
+    func test_fetch_shouldFetchFeatureFlags() {
+        mockedFetcher.stubbedFeatureFlags = expected()
+        XCTAssertEqual(ui.fetch(), expected())
+    }
+
+    // MARK: - persist
+
+    func test_persist_shouldPersistFlags() {
+        ui.persist(expected())
+        XCTAssertEqual(mockedPersister.invokedFeatureFlags!, expected())
     }
 
     // MARK: - Helpers
 
     func expected() -> [FeatureFlag] {
-        return []
+        return [
+            FeatureFlag(key: "feature1", name: "Feature 1", value: false),
+            FeatureFlag(key: "feature2", name: "Feature 2", value: false)
+        ]
     }
 }
