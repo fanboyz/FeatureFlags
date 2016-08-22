@@ -54,6 +54,11 @@
 		5A2E5A531D6AF344006AE99A /* FeatureFlagsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A521D6AF344006AE99A /* FeatureFlagsUITests.swift */; };
 		5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2B1D6AF238006AE99A /* MockFeatureFlagFetcher.swift */; };
 		5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2C1D6AF238006AE99A /* MockFeatureFlagPersister.swift */; };
+		5A2E5A581D6AFB71006AE99A /* FeatureFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2A1D6AF238006AE99A /* FeatureFlagTests.swift */; };
+		5A2E5A591D6AFB71006AE99A /* PlistFeatureFlagFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2D1D6AF238006AE99A /* PlistFeatureFlagFetcherTests.swift */; };
+		5A2E5A5A1D6AFB71006AE99A /* PlistFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2E1D6AF238006AE99A /* PlistFeatureFlagPersister.swift */; };
+		5A2E5A5B1D6AFBA0006AE99A /* TestFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4A1D6AF2AF006AE99A /* TestFeatureFlags.plist */; };
+		5A2E5A5C1D6AFBA0006AE99A /* TestPartialFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4B1D6AF2AF006AE99A /* TestPartialFeatureFlags.plist */; };
 		5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83270D1D65E88F00D21D95 /* AppDelegate.swift */; };
 		5A8327131D65E88F00D21D95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327111D65E88F00D21D95 /* Main.storyboard */; };
 		5A8327151D65E88F00D21D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327141D65E88F00D21D95 /* Assets.xcassets */; };
@@ -545,6 +550,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2E5A5B1D6AFBA0006AE99A /* TestFeatureFlags.plist in Resources */,
+				5A2E5A5C1D6AFBA0006AE99A /* TestPartialFeatureFlags.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,8 +619,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */,
+				5A2E5A5A1D6AFB71006AE99A /* PlistFeatureFlagPersister.swift in Sources */,
 				5A2E5A531D6AF344006AE99A /* FeatureFlagsUITests.swift in Sources */,
+				5A2E5A581D6AFB71006AE99A /* FeatureFlagTests.swift in Sources */,
 				5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */,
+				5A2E5A591D6AFB71006AE99A /* PlistFeatureFlagFetcherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +754,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = Resources/FeatureFlagsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D ${TARGET_NAME}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -754,6 +765,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = Resources/FeatureFlagsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D ${TARGET_NAME}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riseproject.FeatureFlagsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
