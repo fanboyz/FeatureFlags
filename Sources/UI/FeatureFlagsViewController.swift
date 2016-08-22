@@ -8,23 +8,28 @@
 
 import UIKit
 
-class FeatureFlagsViewController: UIViewController {
-    
-    @IBOutlet private var tableView: UITableView!
+class FeatureFlagsViewController: UITableViewController {
+
     var featureFlagsMutator: FeatureFlagsMutator!
     private var featureFlags = [FeatureFlag]() {
         didSet { tableView.reloadData() }
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if featureFlagsMutator == nil {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard featureFlagsMutator != nil else {
             showMissingDependencyError()
             return
         }
-        load()
+        title = "Feature Flags"
+        setUpTableView()
         setUpBackgroundNotification()
-        adjustInsets()
+        load()
+    }
+
+    private func setUpTableView() {
+        let switchCellNib = UINib(nibName: "SwitchCell", bundle: NSBundle(forClass: FeatureFlagsViewController.self))
+        tableView.registerNib(switchCellNib, forCellReuseIdentifier: "switchCell")
     }
     
     private func setUpBackgroundNotification() {
@@ -33,14 +38,8 @@ class FeatureFlagsViewController: UIViewController {
         }
     }
     
-    private func adjustInsets() {
-        tableView.contentInset = UIEdgeInsetsZero
-        tableView.scrollIndicatorInsets = UIEdgeInsetsZero
-    }
-    
     private func load() {
         featureFlags = featureFlagsMutator.fetch()
-        tableView.reloadData()
     }
     
     private func change(value value: Bool, atIndex index: Int) {
@@ -55,13 +54,13 @@ class FeatureFlagsViewController: UIViewController {
     }
 }
 
-extension FeatureFlagsViewController: UITableViewDataSource {
+extension FeatureFlagsViewController { // UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return featureFlags.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("switchCell", forIndexPath: indexPath) as! SwitchCell
         let index = indexPath.row
         cell.name = featureFlags[index].name

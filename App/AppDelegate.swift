@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FeatureFlagsUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let file = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.riseproject.featureflags")!
+        .URLByAppendingPathComponent("featureFlags.plist")
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let flagsController = FeatureFlagsUI.launch(sharedFeatureFlagFile: file)
+        window?.rootViewController = UINavigationController(rootViewController: flagsController)
+        window?.makeKeyAndVisible()
         return true
     }
 }
