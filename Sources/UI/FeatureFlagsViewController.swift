@@ -7,18 +7,21 @@
 //
 
 import UIKit
-import FeatureFlagsUI
 
 class FeatureFlagsViewController: UIViewController {
     
     @IBOutlet private var tableView: UITableView!
-    private var featureFlagsUI: FeatureFlagsUI!
+    var featureFlagsMutator: FeatureFlagsMutator!
     private var featureFlags = [FeatureFlag]() {
         didSet { tableView.reloadData() }
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if featureFlagsMutator == nil {
+            showMissingDependencyError()
+            return
+        }
         load()
         setUpBackgroundNotification()
         adjustInsets()
@@ -36,28 +39,19 @@ class FeatureFlagsViewController: UIViewController {
     }
     
     private func load() {
-        guard let file = sharedFile else {
-            showError()
-            return
-        }
-        featureFlagsUI = FeatureFlagsUI(sharedFeatureFlagFile: file)
-        featureFlags = featureFlagsUI.fetch()
+        featureFlags = featureFlagsMutator.fetch()
         tableView.reloadData()
     }
     
     private func change(value value: Bool, atIndex index: Int) {
         featureFlags[index].value = value
-        featureFlagsUI.persist(featureFlags)
+        featureFlagsMutator.persist(featureFlags)
     }
     
-    private func showError() {
-        let alert = UIAlertController(title: "Error", message: "Not allowed access to the shared group directory.", preferredStyle: .Alert)
+    private func showMissingDependencyError() {
+        let alert = UIAlertController(title: "Error", message: "Missing FeatureFlagsMutator dependency", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    private var sharedFile: NSURL? {
-        return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.riseproject.featureflags")?.URLByAppendingPathComponent("featureFlags.plist")
     }
 }
 
