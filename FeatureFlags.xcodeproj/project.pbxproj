@@ -515,6 +515,7 @@
 					};
 					5A97BC411D65DC1F005D77C5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					5AB254011D65C230004F88A6 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -607,7 +608,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash -e";
-			shellScript = "function build {\n    xcrun xcodebuild -project FeatureFlags.xcodeproj -scheme \"${1}\" -destination \"${2}\" clean build ONLY_ACTIVE_ARCH=NO BUILD_DIR=build\n}\n\nfunction stitch {\n    cp -rf \"build/Debug-iphoneos/${1}.framework\" products\n    xcrun lipo -create build/Debug-iphoneos/${1}.framework/${1} build/Debug-iphonesimulator/${1}.framework/${1} -output products/${1}.framework/${1}\n    cp -r build/Debug-iphonesimulator/${1}.framework/Modules/${1}.swiftmodule products/${1}.framework/Modules\n}\n\nfunction buildAndStitch {\n    build \"${1}\" \"platform=iOS Simulator,name=iPhone 6,OS=9.3\"\n    build \"${1}\" \"generic/platform=iOS\"\n    stitch \"${1}\"\n}\n\nif [ ! -d products ]; then\n    mkdir products\nfi\n\nbuildAndStitch \"FeatureFlags\"\nbuildAndStitch \"FeatureFlagsUI\"\n";
+			shellScript = "function build {\n    xcrun xcodebuild -project FeatureFlags.xcodeproj -scheme \"${1}\" -destination \"${2}\" clean build ONLY_ACTIVE_ARCH=NO BUILD_DIR=build\n}\n\nfunction stitch {\n    cp -rf \"build/Debug-iphoneos/${1}.framework\" products\n    xcrun lipo -create build/Debug-iphoneos/${1}.framework/${1} build/Debug-iphonesimulator/${1}.framework/${1} -output products/${1}.framework/${1}\n    cp -r build/Debug-iphonesimulator/${1}.framework/Modules/${1}.swiftmodule products/${1}.framework/Modules\n}\n\nfunction buildAndStitch {\n    build \"${1}\" \"platform=iOS Simulator,name=iPhone 7,OS=10.0\"\n    build \"${1}\" \"generic/platform=iOS\"\n    stitch \"${1}\"\n}\n\nif [ ! -d products ]; then\n    mkdir products\nfi\n\nbuildAndStitch \"FeatureFlags\"\nbuildAndStitch \"FeatureFlagsUI\"\nopen products\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -814,6 +815,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -821,6 +823,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
