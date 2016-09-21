@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let file = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.riseproject.featureflags")!
         .URLByAppendingPathComponent("featureFlags.plist")
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let flagsController = FeatureFlagsUI.launch(sharedFeatureFlagFile: file)
+        let flagsController = FeatureFlagsUI.launch(sharedFeatureFlagFile: file!)
         window?.rootViewController = UINavigationController(rootViewController: flagsController)
         window?.makeKeyAndVisible()
         return true
