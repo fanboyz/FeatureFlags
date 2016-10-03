@@ -32,23 +32,59 @@ class FeatureFlagsMutatorTests: XCTestCase {
     // MARK: - fetch
     
     func test_fetch_shouldFetchFeatureFlags() {
-        mockedFetcher.stubbedFeatureFlags = expected()
-        XCTAssertEqual(mutator.fetch(), expected())
+        mockedFetcher.stubbedFeatureFlags = featureFlags()
+        XCTAssertEqual(mutator.fetch(), featureFlags())
     }
 
     // MARK: - persist
 
     func test_persist_shouldPersistFlags() {
-        mutator.persist(expected())
-        XCTAssertEqual(mockedPersister.invokedFeatureFlags!, expected())
+        mutator.persist(featureFlags())
+        XCTAssertEqual(mockedPersister.invokedFeatureFlags!, featureFlags())
+    }
+
+    // MARK: - update(_,to:)
+
+    func test_update_shouldChangeValueOfFeatures() {
+        stubFeatureFlags(false, false)
+        update(at: 0, to: true)
+        assertFlags(true, false)
+
+        stubFeatureFlags(false, false)
+        update(at: 1, to: true)
+        assertFlags(false, true)
+
+        stubFeatureFlags(true, true)
+        update(at: 0, to: false)
+        assertFlags(false, true)
     }
 
     // MARK: - Helpers
 
-    func expected() -> [FeatureFlag] {
+    func featureFlags() -> [FeatureFlag] {
         return [
             FeatureFlag(key: "feature1", name: "Feature 1", value: false),
             FeatureFlag(key: "feature2", name: "Feature 2", value: false)
         ]
+    }
+
+    func stubFeatureFlags(values: Bool...) {
+        mockedFetcher.stubbedFeatureFlags = values.map { value in
+            FeatureFlag(key: NSUUID().UUIDString, name: "", value: value)
+        }
+    }
+
+    func update(at index: Int, to value: Bool) {
+        mutator.update(mockedFetcher.stubbedFeatureFlags[index], to: value)
+    }
+
+    func assertFlags(values: Bool..., file: StaticString = #file, line: UInt = #line) {
+        for (i, value) in values.enumerate() {
+            XCTAssertEqual(value, persistedFeatureFlags()[i].value, file: file, line: line)
+        }
+    }
+
+    func persistedFeatureFlags() -> [FeatureFlag] {
+        return mockedPersister.invokedFeatureFlags!
     }
 }

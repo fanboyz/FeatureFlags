@@ -31,4 +31,19 @@ class FeatureFlagsMutator {
     func persist(featureFlags: [FeatureFlag]) {
         persister.persist(featureFlags)
     }
+
+    func update(featureFlag: FeatureFlag, to value: Bool) {
+        let flags = fetch().map(changing(featureFlag, to: value))
+        persister.persist(flags)
+    }
+
+    private func changing(featureFlag: FeatureFlag, to value: Bool) -> (FeatureFlag) -> (FeatureFlag) {
+        return { flag in
+            var flag = flag
+            if flag.key == featureFlag.key {
+                flag.value = value
+            }
+            return flag
+        }
+    }
 }
