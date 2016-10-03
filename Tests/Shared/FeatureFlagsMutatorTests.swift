@@ -40,13 +40,6 @@ class FeatureFlagsMutatorTests: XCTestCase {
         XCTAssertEqual(mutator.fetch(), featureFlags())
     }
 
-    // MARK: - persist
-
-    func test_persist_shouldPersistFlags() {
-        mutator.persist(featureFlags())
-        XCTAssertEqual(mockedPersister.invokedFeatureFlags!, featureFlags())
-    }
-
     // MARK: - update(_,to:)
 
     func test_update_shouldChangeValueOfFeatures() {
@@ -79,7 +72,7 @@ class FeatureFlagsMutatorTests: XCTestCase {
     }
 
     func update(at index: Int, to value: Bool) {
-        mutator.update(mockedFetcher.stubbedFeatureFlags[index], to: value)
+        mutator.update(mockedFetcher.stubbedFeatureFlags[index].key, to: value)
     }
 
     func assertFlags(values: Bool..., file: StaticString = #file, line: UInt = #line) {

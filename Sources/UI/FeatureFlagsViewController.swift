@@ -43,7 +43,7 @@ class FeatureFlagsViewController: UITableViewController {
     }
     
     private func change(value value: Bool, atIndex index: Int) {
-        featureFlagsMutator.update(featureFlags[index], to: value)
+        featureFlagsMutator.update(featureFlags[index].key, to: value)
     }
     
     private func showMissingDependencyError() {

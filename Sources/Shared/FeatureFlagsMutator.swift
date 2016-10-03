@@ -7,12 +7,12 @@
 import Foundation
 import UIKit
 
-class FeatureFlagsMutator {
+public class FeatureFlagsMutator {
 
     let fetcher: FeatureFlagFetcher
     let persister: FeatureFlagPersister
 
-    convenience init(sharedFeatureFlagFile: NSURL) {
+    public convenience init(sharedFeatureFlagFile: NSURL) {
         self.init(
             fetcher: PlistFeatureFlagFetcher(file: sharedFeatureFlagFile),
             persister: PlistFeatureFlagPersister(file: sharedFeatureFlagFile)
@@ -24,26 +24,26 @@ class FeatureFlagsMutator {
         self.persister = persister
     }
 
+    public func update(key: String, to value: Bool) {
+        let flags = fetch().map(changing(key, to: value))
+        persister.persist(flags)
+    }
+
     func fetch() -> [FeatureFlag] {
         return fetcher.fetch()
     }
 
-    func persist(featureFlags: [FeatureFlag]) {
-        persister.persist(featureFlags)
-    }
-
-    func update(featureFlag: FeatureFlag, to value: Bool) {
-        let flags = fetch().map(changing(featureFlag, to: value))
-        persister.persist(flags)
-    }
-
-    private func changing(featureFlag: FeatureFlag, to value: Bool) -> (FeatureFlag) -> (FeatureFlag) {
+    private func changing(key: String, to value: Bool) -> (FeatureFlag) -> (FeatureFlag) {
         return { flag in
             var flag = flag
-            if flag.key == featureFlag.key {
+            if flag.key == key {
                 flag.value = value
             }
             return flag
         }
+    }
+
+    private func persist(featureFlags: [FeatureFlag]) {
+        persister.persist(featureFlags)
     }
 }
