@@ -200,14 +200,14 @@
 		5A2E5A061D6AF20F006AE99A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E5A071D6AF20F006AE99A /* Client */,
+				5A2E5A071D6AF20F006AE99A /* Reader */,
 				5A2E5A0C1D6AF20F006AE99A /* Shared */,
 				5A2E5A121D6AF20F006AE99A /* UI */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		5A2E5A071D6AF20F006AE99A /* Client */ = {
+		5A2E5A071D6AF20F006AE99A /* Reader */ = {
 			isa = PBXGroup;
 			children = (
 				5A2E5A081D6AF20F006AE99A /* Feature.swift */,
@@ -215,7 +215,7 @@
 				5A2E5A0A1D6AF20F006AE99A /* FlagValueFetcher.swift */,
 				5A2E5A0B1D6AF20F006AE99A /* MergingFeaturePersister.swift */,
 			);
-			path = Client;
+			path = Reader;
 			sourceTree = "<group>";
 		};
 		5A2E5A0C1D6AF20F006AE99A /* Shared */ = {
@@ -245,14 +245,14 @@
 		5A2E5A231D6AF238006AE99A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E5A241D6AF238006AE99A /* Client */,
+				5A2E5A241D6AF238006AE99A /* Reader */,
 				5A2E5A291D6AF238006AE99A /* Shared */,
 				5A2E5A2F1D6AF238006AE99A /* UI */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		5A2E5A241D6AF238006AE99A /* Client */ = {
+		5A2E5A241D6AF238006AE99A /* Reader */ = {
 			isa = PBXGroup;
 			children = (
 				5A2E5A251D6AF238006AE99A /* FeatureFlagsReaderTests.swift */,
@@ -260,7 +260,7 @@
 				5A2E5A271D6AF238006AE99A /* FlagValueFetcherTests.swift */,
 				5A2E5A281D6AF238006AE99A /* MergingFeaturePersisterTests.swift */,
 			);
-			path = Client;
+			path = Reader;
 			sourceTree = "<group>";
 		};
 		5A2E5A291D6AF238006AE99A /* Shared */ = {
