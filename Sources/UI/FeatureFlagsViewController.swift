@@ -1,10 +1,3 @@
-//
-//  FeatureFlagsViewController.swift
-//  FeatureFlags
-//
-//  Created by Sean Henry RP on 18/08/2016.
-//  Copyright © 2016 Rise Project. All rights reserved.
-//
 
 import UIKit
 
