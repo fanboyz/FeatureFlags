@@ -25,7 +25,7 @@
 		5A2E59EF1D6AEF85006AE99A /* FeatureFlagsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2E59DA1D6AEF85006AE99A /* FeatureFlagsUI.framework */; };
 		5A2E59F01D6AEF85006AE99A /* FeatureFlagsUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2E59DA1D6AEF85006AE99A /* FeatureFlagsUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5A2E5A141D6AF214006AE99A /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A081D6AF20F006AE99A /* Feature.swift */; };
-		5A2E5A151D6AF214006AE99A /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A091D6AF20F006AE99A /* FeatureFlags.swift */; };
+		5A2E5A151D6AF214006AE99A /* FeatureFlagsReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A091D6AF20F006AE99A /* FeatureFlagsReader.swift */; };
 		5A2E5A161D6AF214006AE99A /* FlagValueFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A0A1D6AF20F006AE99A /* FlagValueFetcher.swift */; };
 		5A2E5A171D6AF214006AE99A /* MergingFeaturePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A0B1D6AF20F006AE99A /* MergingFeaturePersister.swift */; };
 		5A2E5A181D6AF218006AE99A /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A0D1D6AF20F006AE99A /* FeatureFlag.swift */; };
@@ -38,7 +38,7 @@
 		5A2E5A1F1D6AF219006AE99A /* FeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A0F1D6AF20F006AE99A /* FeatureFlagPersister.swift */; };
 		5A2E5A201D6AF219006AE99A /* PlistFeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A101D6AF20F006AE99A /* PlistFeatureFlagFetcher.swift */; };
 		5A2E5A211D6AF219006AE99A /* PlistFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A111D6AF20F006AE99A /* PlistFeatureFlagPersister.swift */; };
-		5A2E5A301D6AF23C006AE99A /* FeatureFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A251D6AF238006AE99A /* FeatureFlagsTests.swift */; };
+		5A2E5A301D6AF23C006AE99A /* FeatureFlagsReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A251D6AF238006AE99A /* FeatureFlagsReaderTests.swift */; };
 		5A2E5A311D6AF23C006AE99A /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A261D6AF238006AE99A /* FeatureTests.swift */; };
 		5A2E5A321D6AF23C006AE99A /* FlagValueFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A271D6AF238006AE99A /* FlagValueFetcherTests.swift */; };
 		5A2E5A331D6AF23C006AE99A /* MergingFeaturePersisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A281D6AF238006AE99A /* MergingFeaturePersisterTests.swift */; };
@@ -49,8 +49,6 @@
 		5A2E5A3D1D6AF265006AE99A /* PlistFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2E1D6AF238006AE99A /* PlistFeatureFlagPersister.swift */; };
 		5A2E5A4C1D6AF2B5006AE99A /* TestFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4A1D6AF2AF006AE99A /* TestFeatureFlags.plist */; };
 		5A2E5A4D1D6AF2B5006AE99A /* TestPartialFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4B1D6AF2AF006AE99A /* TestPartialFeatureFlags.plist */; };
-		5A2E5A511D6AF331006AE99A /* FeatureFlagsMutator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A501D6AF331006AE99A /* FeatureFlagsMutator.swift */; };
-		5A2E5A531D6AF344006AE99A /* FeatureFlagsMutatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A521D6AF344006AE99A /* FeatureFlagsMutatorTests.swift */; };
 		5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2B1D6AF238006AE99A /* MockFeatureFlagFetcher.swift */; };
 		5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2C1D6AF238006AE99A /* MockFeatureFlagPersister.swift */; };
 		5A2E5A581D6AFB71006AE99A /* FeatureFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2A1D6AF238006AE99A /* FeatureFlagTests.swift */; };
@@ -63,6 +61,10 @@
 		5A2E5A621D6AFF48006AE99A /* FeatureFlagsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A611D6AFF48006AE99A /* FeatureFlagsUI.swift */; };
 		5A2E5A641D6B0033006AE99A /* FeatureFlagsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A631D6B0033006AE99A /* FeatureFlagsUITests.swift */; };
 		5A2E5A661D6B087B006AE99A /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A651D6B087B006AE99A /* SwitchCell.xib */; };
+		5A4477921DA27AB5003F56CF /* FeatureFlagsMutator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477911DA27AB5003F56CF /* FeatureFlagsMutator.swift */; };
+		5A4477931DA27AB5003F56CF /* FeatureFlagsMutator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477911DA27AB5003F56CF /* FeatureFlagsMutator.swift */; };
+		5A4477951DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477941DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift */; };
+		5A4477961DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477941DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift */; };
 		5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83270D1D65E88F00D21D95 /* AppDelegate.swift */; };
 		5A8327151D65E88F00D21D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327141D65E88F00D21D95 /* Assets.xcassets */; };
 		5A8327181D65E88F00D21D95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8327161D65E88F00D21D95 /* LaunchScreen.storyboard */; };
@@ -111,7 +113,7 @@
 		5A2E59DA1D6AEF85006AE99A /* FeatureFlagsUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureFlagsUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2E59E31D6AEF85006AE99A /* FeatureFlagsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeatureFlagsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2E5A081D6AF20F006AE99A /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
-		5A2E5A091D6AF20F006AE99A /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlags.swift; sourceTree = "<group>"; };
+		5A2E5A091D6AF20F006AE99A /* FeatureFlagsReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsReader.swift; sourceTree = "<group>"; };
 		5A2E5A0A1D6AF20F006AE99A /* FlagValueFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagValueFetcher.swift; sourceTree = "<group>"; };
 		5A2E5A0B1D6AF20F006AE99A /* MergingFeaturePersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergingFeaturePersister.swift; sourceTree = "<group>"; };
 		5A2E5A0D1D6AF20F006AE99A /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
@@ -119,7 +121,7 @@
 		5A2E5A0F1D6AF20F006AE99A /* FeatureFlagPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagPersister.swift; sourceTree = "<group>"; };
 		5A2E5A101D6AF20F006AE99A /* PlistFeatureFlagFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistFeatureFlagFetcher.swift; sourceTree = "<group>"; };
 		5A2E5A111D6AF20F006AE99A /* PlistFeatureFlagPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistFeatureFlagPersister.swift; sourceTree = "<group>"; };
-		5A2E5A251D6AF238006AE99A /* FeatureFlagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsTests.swift; sourceTree = "<group>"; };
+		5A2E5A251D6AF238006AE99A /* FeatureFlagsReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsReaderTests.swift; sourceTree = "<group>"; };
 		5A2E5A261D6AF238006AE99A /* FeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
 		5A2E5A271D6AF238006AE99A /* FlagValueFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagValueFetcherTests.swift; sourceTree = "<group>"; };
 		5A2E5A281D6AF238006AE99A /* MergingFeaturePersisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergingFeaturePersisterTests.swift; sourceTree = "<group>"; };
@@ -136,13 +138,13 @@
 		5A2E5A481D6AF2AF006AE99A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A2E5A4A1D6AF2AF006AE99A /* TestFeatureFlags.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestFeatureFlags.plist; sourceTree = "<group>"; };
 		5A2E5A4B1D6AF2AF006AE99A /* TestPartialFeatureFlags.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestPartialFeatureFlags.plist; sourceTree = "<group>"; };
-		5A2E5A501D6AF331006AE99A /* FeatureFlagsMutator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsMutator.swift; sourceTree = "<group>"; };
-		5A2E5A521D6AF344006AE99A /* FeatureFlagsMutatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsMutatorTests.swift; sourceTree = "<group>"; };
 		5A2E5A5D1D6AFE0E006AE99A /* FeatureFlagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsViewController.swift; sourceTree = "<group>"; };
 		5A2E5A5E1D6AFE0E006AE99A /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		5A2E5A611D6AFF48006AE99A /* FeatureFlagsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsUI.swift; sourceTree = "<group>"; };
 		5A2E5A631D6B0033006AE99A /* FeatureFlagsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsUITests.swift; sourceTree = "<group>"; };
 		5A2E5A651D6B087B006AE99A /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		5A4477911DA27AB5003F56CF /* FeatureFlagsMutator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsMutator.swift; sourceTree = "<group>"; };
+		5A4477941DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsMutatorTests.swift; sourceTree = "<group>"; };
 		5A83270B1D65E88F00D21D95 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A83270D1D65E88F00D21D95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A8327141D65E88F00D21D95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -209,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				5A2E5A081D6AF20F006AE99A /* Feature.swift */,
-				5A2E5A091D6AF20F006AE99A /* FeatureFlags.swift */,
+				5A2E5A091D6AF20F006AE99A /* FeatureFlagsReader.swift */,
 				5A2E5A0A1D6AF20F006AE99A /* FlagValueFetcher.swift */,
 				5A2E5A0B1D6AF20F006AE99A /* MergingFeaturePersister.swift */,
 			);
@@ -222,6 +224,7 @@
 				5A2E5A0D1D6AF20F006AE99A /* FeatureFlag.swift */,
 				5A2E5A0E1D6AF20F006AE99A /* FeatureFlagFetcher.swift */,
 				5A2E5A0F1D6AF20F006AE99A /* FeatureFlagPersister.swift */,
+				5A4477911DA27AB5003F56CF /* FeatureFlagsMutator.swift */,
 				5A2E5A101D6AF20F006AE99A /* PlistFeatureFlagFetcher.swift */,
 				5A2E5A111D6AF20F006AE99A /* PlistFeatureFlagPersister.swift */,
 			);
@@ -232,7 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				5A2E5A611D6AFF48006AE99A /* FeatureFlagsUI.swift */,
-				5A2E5A501D6AF331006AE99A /* FeatureFlagsMutator.swift */,
 				5A2E5A5D1D6AFE0E006AE99A /* FeatureFlagsViewController.swift */,
 				5A2E5A5E1D6AFE0E006AE99A /* SwitchCell.swift */,
 				5A2E5A651D6B087B006AE99A /* SwitchCell.xib */,
@@ -253,7 +255,7 @@
 		5A2E5A241D6AF238006AE99A /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E5A251D6AF238006AE99A /* FeatureFlagsTests.swift */,
+				5A2E5A251D6AF238006AE99A /* FeatureFlagsReaderTests.swift */,
 				5A2E5A261D6AF238006AE99A /* FeatureTests.swift */,
 				5A2E5A271D6AF238006AE99A /* FlagValueFetcherTests.swift */,
 				5A2E5A281D6AF238006AE99A /* MergingFeaturePersisterTests.swift */,
@@ -264,6 +266,7 @@
 		5A2E5A291D6AF238006AE99A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5A4477941DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift */,
 				5A2E5A2A1D6AF238006AE99A /* FeatureFlagTests.swift */,
 				5A2E5A2B1D6AF238006AE99A /* MockFeatureFlagFetcher.swift */,
 				5A2E5A2C1D6AF238006AE99A /* MockFeatureFlagPersister.swift */,
@@ -276,7 +279,6 @@
 		5A2E5A2F1D6AF238006AE99A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E5A521D6AF344006AE99A /* FeatureFlagsMutatorTests.swift */,
 				5A2E5A631D6B0033006AE99A /* FeatureFlagsUITests.swift */,
 			);
 			path = UI;
@@ -617,10 +619,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4477931DA27AB5003F56CF /* FeatureFlagsMutator.swift in Sources */,
 				5A2E5A1F1D6AF219006AE99A /* FeatureFlagPersister.swift in Sources */,
 				5A2E5A1E1D6AF219006AE99A /* FeatureFlagFetcher.swift in Sources */,
 				5A2E5A621D6AFF48006AE99A /* FeatureFlagsUI.swift in Sources */,
-				5A2E5A511D6AF331006AE99A /* FeatureFlagsMutator.swift in Sources */,
 				5A2E5A211D6AF219006AE99A /* PlistFeatureFlagPersister.swift in Sources */,
 				5A2E5A5F1D6AFE0E006AE99A /* FeatureFlagsViewController.swift in Sources */,
 				5A2E5A601D6AFE0E006AE99A /* SwitchCell.swift in Sources */,
@@ -634,9 +636,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A2E5A641D6B0033006AE99A /* FeatureFlagsUITests.swift in Sources */,
+				5A4477961DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift in Sources */,
 				5A2E5A561D6AF53B006AE99A /* MockFeatureFlagFetcher.swift in Sources */,
 				5A2E5A5A1D6AFB71006AE99A /* PlistFeatureFlagPersister.swift in Sources */,
-				5A2E5A531D6AF344006AE99A /* FeatureFlagsMutatorTests.swift in Sources */,
 				5A2E5A581D6AFB71006AE99A /* FeatureFlagTests.swift in Sources */,
 				5A2E5A571D6AF53B006AE99A /* MockFeatureFlagPersister.swift in Sources */,
 				5A2E5A591D6AFB71006AE99A /* PlistFeatureFlagFetcherTests.swift in Sources */,
@@ -657,9 +659,10 @@
 			files = (
 				5A2E5A391D6AF265006AE99A /* FeatureFlagTests.swift in Sources */,
 				5A2E5A311D6AF23C006AE99A /* FeatureTests.swift in Sources */,
-				5A2E5A301D6AF23C006AE99A /* FeatureFlagsTests.swift in Sources */,
+				5A2E5A301D6AF23C006AE99A /* FeatureFlagsReaderTests.swift in Sources */,
 				5A2E5A331D6AF23C006AE99A /* MergingFeaturePersisterTests.swift in Sources */,
 				5A2E5A3D1D6AF265006AE99A /* PlistFeatureFlagPersister.swift in Sources */,
+				5A4477951DA27AE1003F56CF /* FeatureFlagsMutatorTests.swift in Sources */,
 				5A2E5A3A1D6AF265006AE99A /* MockFeatureFlagFetcher.swift in Sources */,
 				5A2E5A321D6AF23C006AE99A /* FlagValueFetcherTests.swift in Sources */,
 				5A2E5A3B1D6AF265006AE99A /* MockFeatureFlagPersister.swift in Sources */,
@@ -673,9 +676,10 @@
 			files = (
 				5A2E5A161D6AF214006AE99A /* FlagValueFetcher.swift in Sources */,
 				5A2E5A141D6AF214006AE99A /* Feature.swift in Sources */,
-				5A2E5A151D6AF214006AE99A /* FeatureFlags.swift in Sources */,
+				5A2E5A151D6AF214006AE99A /* FeatureFlagsReader.swift in Sources */,
 				5A2E5A191D6AF218006AE99A /* FeatureFlagFetcher.swift in Sources */,
 				5A2E5A181D6AF218006AE99A /* FeatureFlag.swift in Sources */,
+				5A4477921DA27AB5003F56CF /* FeatureFlagsMutator.swift in Sources */,
 				5A2E5A1A1D6AF218006AE99A /* FeatureFlagPersister.swift in Sources */,
 				5A2E5A1C1D6AF218006AE99A /* PlistFeatureFlagPersister.swift in Sources */,
 				5A2E5A1B1D6AF218006AE99A /* PlistFeatureFlagFetcher.swift in Sources */,

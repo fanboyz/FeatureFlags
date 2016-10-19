@@ -1,21 +1,21 @@
 //
-//  FeatureFlags.swift
+//  FeatureFlagsReader.swift
 //
 //  Copyright © 2016 Rise Project. All rights reserved.
 //
 
 import Foundation
 
-public protocol FeatureFlagsDelegate: class {
+public protocol FeatureFlagsReaderDelegate: class {
     var sharedFeatureFlagFile: NSURL { get }
     var features: [Feature] { get }
 }
 
-public class FeatureFlags {
+public class FeatureFlagsReader {
     
     private let flagFetcher: FlagValueFetcher
     
-    public init(delegate: FeatureFlagsDelegate) {
+    public init(delegate: FeatureFlagsReaderDelegate) {
         let sharedFile = delegate.sharedFeatureFlagFile
         let fetcher = PlistFeatureFlagFetcher(file: sharedFile)
         let persister = PlistFeatureFlagPersister(file: sharedFile)

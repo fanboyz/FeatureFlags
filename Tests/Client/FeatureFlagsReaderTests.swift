@@ -1,5 +1,5 @@
 //
-//  FeatureFlagsTests.swift
+//  FeatureFlagsReaderTests.swift
 //
 //  Copyright © 2016 Rise Project. All rights reserved.
 //
@@ -7,40 +7,40 @@
 import XCTest
 @testable import FeatureFlags
 
-class FeatureFlagsTests: XCTestCase {
+class FeatureFlagsReaderTests: XCTestCase {
     
-    var flags: FeatureFlags!
+    var reader: FeatureFlagsReader!
     
     override func setUp() {
         super.setUp()
         deleteSharedFile()
-        flags = FeatureFlags(delegate: self)
+        reader = FeatureFlagsReader(delegate: self)
     }
     
     // MARK: - init
     
     func test_init_shouldPreserverExistingValues() {
         turnFirstFeatureOn()
-        flags = FeatureFlags(delegate: self)
-        XCTAssert(flags.value(forFlag: "feature1"))
-        XCTAssertFalse(flags.value(forFlag: "feature2"))
+        reader = FeatureFlagsReader(delegate: self)
+        XCTAssert(reader.value(forFlag: "feature1"))
+        XCTAssertFalse(reader.value(forFlag: "feature2"))
     }
     
     // MARK: - value(forFlag:)
     
     func test_valueForFlag_shouldGetValues() {
-        XCTAssertFalse(flags.value(forFlag: "feature1"))
-        XCTAssertFalse(flags.value(forFlag: "feature2"))
+        XCTAssertFalse(reader.value(forFlag: "feature1"))
+        XCTAssertFalse(reader.value(forFlag: "feature2"))
     }
     
     func test_valueForFlag_shouldBeFalse_whenNoFeature() {
-        XCTAssertFalse(flags.value(forFlag: "nonexistent"))
+        XCTAssertFalse(reader.value(forFlag: "nonexistent"))
     }
     
     func test_valueForFlag_shouldGetTrueValue() {
         turnFirstFeatureOn()
-        XCTAssert(flags.value(forFlag: "feature1"))
-        XCTAssertFalse(flags.value(forFlag: "feature2"))
+        XCTAssert(reader.value(forFlag: "feature1"))
+        XCTAssertFalse(reader.value(forFlag: "feature2"))
     }
     
     // MARK: - Helpers
@@ -58,7 +58,7 @@ class FeatureFlagsTests: XCTestCase {
     }
 }
 
-extension FeatureFlagsTests: FeatureFlagsDelegate {
+extension FeatureFlagsReaderTests: FeatureFlagsReaderDelegate {
     
     var sharedFeatureFlagFile: NSURL {
         return NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
