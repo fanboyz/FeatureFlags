@@ -132,6 +132,7 @@
 		5ADF6CC11DB77B4100C8068D /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		5ADF6CC31DB77B9200C8068D /* DemoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemoViewController.storyboard; sourceTree = "<group>"; };
 		5ADF6CC51DB77CE600C8068D /* AppFeatureFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFeatureFlags.swift; sourceTree = "<group>"; };
+		5ADF6CC81DB7864E00C8068D /* FeatureFlags.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = FeatureFlags.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +303,7 @@
 		5AB253E31D65C230004F88A6 = {
 			isa = PBXGroup;
 			children = (
+				5ADF6CC71DB785C600C8068D /* Metadata */,
 				5A2E5A3E1D6AF2AF006AE99A /* Resources */,
 				5A2E5A061D6AF20F006AE99A /* Sources */,
 				5A2E5A231D6AF238006AE99A /* Tests */,
@@ -334,6 +336,14 @@
 				5A4477911DA27AB5003F56CF /* FeatureFlagsWriter.swift */,
 			);
 			path = Writer;
+			sourceTree = "<group>";
+		};
+		5ADF6CC71DB785C600C8068D /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				5ADF6CC81DB7864E00C8068D /* FeatureFlags.podspec */,
+			);
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
