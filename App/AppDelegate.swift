@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FeatureFlagsUI
+import FeatureFlags
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

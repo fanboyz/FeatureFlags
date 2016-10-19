@@ -5,7 +5,7 @@
 //
 
 import XCTest
-@testable import FeatureFlagsUI
+@testable import FeatureFlags
 
 class FeatureFlagsUITests: XCTestCase {
 
