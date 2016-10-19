@@ -1,5 +1,5 @@
 //
-//  FeatureFlagsMutatorTests.swift
+//  FeatureFlagsWriterTests.swift
 //
 //  Copyright © 2016 Rise Project. All rights reserved.
 //
@@ -7,9 +7,9 @@
 import XCTest
 @testable import FeatureFlags
 
-class FeatureFlagsMutatorTests: XCTestCase {
+class FeatureFlagsWriterTests: XCTestCase {
     
-    var mutator: FeatureFlagsMutator!
+    var writer: FeatureFlagsWriter!
     var mockedFetcher: MockFeatureFlagFetcher!
     var mockedPersister: MockFeatureFlagPersister!
     let file = NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
@@ -18,22 +18,22 @@ class FeatureFlagsMutatorTests: XCTestCase {
         super.setUp()
         mockedFetcher = MockFeatureFlagFetcher()
         mockedPersister = MockFeatureFlagPersister()
-        mutator = FeatureFlagsMutator(fetcher: mockedFetcher, persister: mockedPersister)
+        writer = FeatureFlagsWriter(fetcher: mockedFetcher, persister: mockedPersister)
     }
 
     // MARK: - init(sharedFeatureFlagFile:)
 
     func test_init_shouldCreatePlistFetcherAndPersister() {
-        mutator = FeatureFlagsMutator(sharedFeatureFlagFile: file)
-        XCTAssert(mutator.fetcher is PlistFeatureFlagFetcher)
-        XCTAssert(mutator.persister is PlistFeatureFlagPersister)
+        writer = FeatureFlagsWriter(sharedFeatureFlagFile: file)
+        XCTAssert(writer.fetcher is PlistFeatureFlagFetcher)
+        XCTAssert(writer.persister is PlistFeatureFlagPersister)
     }
     
     // MARK: - fetch
     
     func test_fetch_shouldFetchFeatureFlags() {
         mockedFetcher.stubbedFeatureFlags = featureFlags()
-        XCTAssertEqual(mutator.fetch(), featureFlags())
+        XCTAssertEqual(writer.fetch(), featureFlags())
     }
 
     // MARK: - update(_,to:)
@@ -68,7 +68,7 @@ class FeatureFlagsMutatorTests: XCTestCase {
     }
 
     func update(at index: Int, to value: Bool) {
-        mutator.update(mockedFetcher.stubbedFeatureFlags[index].key, to: value)
+        writer.update(mockedFetcher.stubbedFeatureFlags[index].key, to: value)
     }
 
     func assertFlags(values: Bool..., file: StaticString = #file, line: UInt = #line) {

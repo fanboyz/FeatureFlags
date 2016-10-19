@@ -16,6 +16,6 @@ class FeatureFlagsUITests: XCTestCase {
     func test_launch_shouldReturnViewControllerWithMutator() {
         let viewController = FeatureFlagsUI.launch(sharedFeatureFlagFile: file) as? FeatureFlagsViewController
         XCTAssertNotNil(viewController)
-        XCTAssertNotNil(viewController?.featureFlagsMutator)
+        XCTAssertNotNil(viewController?.featureFlagsWriter)
     }
 }

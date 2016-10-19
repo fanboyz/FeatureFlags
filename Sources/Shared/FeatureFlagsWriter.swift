@@ -1,5 +1,5 @@
 //
-//  FeatureFlagsMutator.swift
+//  FeatureFlagsWriter.swift
 //
 //  Copyright © 2016 Rise Project. All rights reserved.
 //
@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-public class FeatureFlagsMutator {
+public class FeatureFlagsWriter {
 
     let fetcher: FeatureFlagFetcher
     let persister: FeatureFlagPersister

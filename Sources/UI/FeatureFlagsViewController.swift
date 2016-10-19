@@ -10,14 +10,14 @@ import UIKit
 
 class FeatureFlagsViewController: UITableViewController {
 
-    var featureFlagsMutator: FeatureFlagsMutator!
+    var featureFlagsWriter: FeatureFlagsWriter!
     private var featureFlags = [FeatureFlag]() {
         didSet { tableView.reloadData() }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard featureFlagsMutator != nil else {
+        guard featureFlagsWriter != nil else {
             showMissingDependencyError()
             return
         }
@@ -39,15 +39,15 @@ class FeatureFlagsViewController: UITableViewController {
     }
     
     private func load() {
-        featureFlags = featureFlagsMutator.fetch()
+        featureFlags = featureFlagsWriter.fetch()
     }
     
     private func change(value value: Bool, atIndex index: Int) {
-        featureFlagsMutator.update(featureFlags[index].key, to: value)
+        featureFlagsWriter.update(featureFlags[index].key, to: value)
     }
     
     private func showMissingDependencyError() {
-        let alert = UIAlertController(title: "Error", message: "Missing FeatureFlagsMutator dependency", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Error", message: "Missing FeatureFlagsWriter dependency", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
     }

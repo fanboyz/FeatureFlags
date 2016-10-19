@@ -11,7 +11,7 @@ public class FeatureFlagsUI {
 
     public static func launch(sharedFeatureFlagFile file: NSURL) -> UIViewController {
         let viewController = FeatureFlagsViewController()
-        viewController.featureFlagsMutator = FeatureFlagsMutator(sharedFeatureFlagFile: file)
+        viewController.featureFlagsWriter = FeatureFlagsWriter(sharedFeatureFlagFile: file)
         return viewController
     }
 }
