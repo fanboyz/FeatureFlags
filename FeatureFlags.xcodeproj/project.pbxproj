@@ -150,6 +150,7 @@
 				5A2E5A071D6AF20F006AE99A /* Reader */,
 				5A2E5A0C1D6AF20F006AE99A /* Shared */,
 				5A2E5A121D6AF20F006AE99A /* UI */,
+				5ADF6CBC1DB778FF00C8068D /* Writer */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -171,7 +172,6 @@
 				5A2E5A0D1D6AF20F006AE99A /* FeatureFlag.swift */,
 				5A2E5A0E1D6AF20F006AE99A /* FeatureFlagFetcher.swift */,
 				5A2E5A0F1D6AF20F006AE99A /* FeatureFlagPersister.swift */,
-				5A4477911DA27AB5003F56CF /* FeatureFlagsWriter.swift */,
 				5A2E5A101D6AF20F006AE99A /* PlistFeatureFlagFetcher.swift */,
 				5A2E5A111D6AF20F006AE99A /* PlistFeatureFlagPersister.swift */,
 			);
@@ -195,6 +195,7 @@
 				5A2E5A241D6AF238006AE99A /* Reader */,
 				5A2E5A291D6AF238006AE99A /* Shared */,
 				5A2E5A2F1D6AF238006AE99A /* UI */,
+				5ADF6CBB1DB778F400C8068D /* Writer */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -213,7 +214,6 @@
 		5A2E5A291D6AF238006AE99A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5A4477941DA27AE1003F56CF /* FeatureFlagsWriterTests.swift */,
 				5A2E5A2A1D6AF238006AE99A /* FeatureFlagTests.swift */,
 				5A2E5A2B1D6AF238006AE99A /* MockFeatureFlagFetcher.swift */,
 				5A2E5A2C1D6AF238006AE99A /* MockFeatureFlagPersister.swift */,
@@ -298,6 +298,22 @@
 				5A83270B1D65E88F00D21D95 /* App.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5ADF6CBB1DB778F400C8068D /* Writer */ = {
+			isa = PBXGroup;
+			children = (
+				5A4477941DA27AE1003F56CF /* FeatureFlagsWriterTests.swift */,
+			);
+			path = Writer;
+			sourceTree = "<group>";
+		};
+		5ADF6CBC1DB778FF00C8068D /* Writer */ = {
+			isa = PBXGroup;
+			children = (
+				5A4477911DA27AB5003F56CF /* FeatureFlagsWriter.swift */,
+			);
+			path = Writer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
