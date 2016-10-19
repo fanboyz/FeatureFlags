@@ -4,7 +4,7 @@ import XCTest
 
 class FeatureFlagsUITests: XCTestCase {
 
-    let file = NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
+    let file = URL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
 
     // MARK: - launch
     

@@ -2,7 +2,7 @@
 import Foundation
 
 public protocol FeatureFlagsReaderDelegate: class {
-    var sharedFeatureFlagFile: NSURL { get }
+    var sharedFeatureFlagFile: URL { get }
     var features: [Feature] { get }
 }
 

@@ -41,7 +41,7 @@ class FeatureFlagsReaderTests: XCTestCase {
     // MARK: - Helpers
     
     func deleteSharedFile() {
-        _ = try? NSFileManager.defaultManager().removeItemAtURL(sharedFeatureFlagFile)
+        try? FileManager.default.removeItem(at: sharedFeatureFlagFile)
     }
     
     func turnFirstFeatureOn() {
@@ -55,8 +55,8 @@ class FeatureFlagsReaderTests: XCTestCase {
 
 extension FeatureFlagsReaderTests: FeatureFlagsReaderDelegate {
     
-    var sharedFeatureFlagFile: NSURL {
-        return NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
+    var sharedFeatureFlagFile: URL {
+        return URL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
     }
     
     var features: [Feature] {

@@ -14,7 +14,7 @@ class FlagValueFetcher {
         return features.filter(matching(flag)).first?.value
     }
     
-    private func matching(flag: String) -> FeatureFlag -> Bool {
+    private func matching(_ flag: String) -> (FeatureFlag) -> Bool {
         return { feature in
             feature.key == flag
         }

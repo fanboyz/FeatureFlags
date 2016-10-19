@@ -2,7 +2,7 @@
 import UIKit
 
 protocol SwitchCellDelegate: class {
-    func cell(cell: SwitchCell, didChangeValue value: Bool)
+    func cell(_ cell: SwitchCell, didChangeValue value: Bool)
 }
 
 class SwitchCell: UITableViewCell {
@@ -17,11 +17,11 @@ class SwitchCell: UITableViewCell {
     }
     
     var value: Bool {
-        set { switchControl.on = newValue }
-        get { return switchControl.on }
+        set { switchControl.isOn = newValue }
+        get { return switchControl.isOn }
     }
     
     @IBAction func didChangeSwitch() {
-        delegate?.cell(self, didChangeValue: switchControl.on)
+        delegate?.cell(self, didChangeValue: switchControl.isOn)
     }
 }

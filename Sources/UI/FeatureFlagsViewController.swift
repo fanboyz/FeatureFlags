@@ -4,7 +4,7 @@ import UIKit
 class FeatureFlagsViewController: UITableViewController {
 
     var featureFlagsWriter: FeatureFlagsWriter!
-    private var featureFlags = [FeatureFlag]() {
+    fileprivate var featureFlags = [FeatureFlag]() {
         didSet { tableView.reloadData() }
     }
 
@@ -21,12 +21,12 @@ class FeatureFlagsViewController: UITableViewController {
     }
 
     private func setUpTableView() {
-        let switchCellNib = UINib(nibName: "SwitchCell", bundle: NSBundle(forClass: FeatureFlagsViewController.self))
-        tableView.registerNib(switchCellNib, forCellReuseIdentifier: "switchCell")
+        let switchCellNib = UINib(nibName: "SwitchCell", bundle: Bundle(for: FeatureFlagsViewController.self))
+        tableView.register(switchCellNib, forCellReuseIdentifier: "switchCell")
     }
     
     private func setUpBackgroundNotification() {
-        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { _ in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil) { _ in
             self.load()
         }
     }
@@ -35,25 +35,25 @@ class FeatureFlagsViewController: UITableViewController {
         featureFlags = featureFlagsWriter.fetch()
     }
     
-    private func change(value value: Bool, atIndex index: Int) {
-        featureFlagsWriter.update(featureFlags[index].key, to: value)
+    fileprivate func change(value: Bool, atIndex index: Int) {
+        featureFlagsWriter.update(key: featureFlags[index].key, to: value)
     }
     
     private func showMissingDependencyError() {
-        let alert = UIAlertController(title: "Error", message: "Missing FeatureFlagsWriter dependency", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Error", message: "Missing FeatureFlagsWriter dependency", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension FeatureFlagsViewController { // UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return featureFlags.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("switchCell", forIndexPath: indexPath) as! SwitchCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchCell
         let index = indexPath.row
         cell.name = featureFlags[index].name
         cell.value = featureFlags[index].value
@@ -64,8 +64,8 @@ extension FeatureFlagsViewController { // UITableViewDataSource
 
 extension FeatureFlagsViewController: SwitchCellDelegate {
     
-    func cell(cell: SwitchCell, didChangeValue value: Bool) {
-        guard let indexPath = tableView.indexPathForCell(cell) else { return }
+    func cell(_ cell: SwitchCell, didChangeValue value: Bool) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
         change(value: value, atIndex: indexPath.row)
     }
 }

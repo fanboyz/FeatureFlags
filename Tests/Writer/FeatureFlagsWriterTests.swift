@@ -7,7 +7,7 @@ class FeatureFlagsWriterTests: XCTestCase {
     var writer: FeatureFlagsWriter!
     var mockedFetcher: MockFeatureFlagFetcher!
     var mockedPersister: MockFeatureFlagPersister!
-    let file = NSURL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
+    let file = URL(fileURLWithPath: NSTemporaryDirectory() + "test.plist")
 
     override func setUp() {
         super.setUp()
@@ -56,18 +56,18 @@ class FeatureFlagsWriterTests: XCTestCase {
         ]
     }
 
-    func stubFeatureFlags(values: Bool...) {
+    func stubFeatureFlags(_ values: Bool...) {
         mockedFetcher.stubbedFeatureFlags = values.map { value in
-            FeatureFlag(key: NSUUID().UUIDString, name: "", value: value)
+            FeatureFlag(key: UUID().uuidString, name: "", value: value)
         }
     }
 
     func update(at index: Int, to value: Bool) {
-        writer.update(mockedFetcher.stubbedFeatureFlags[index].key, to: value)
+        writer.update(key: mockedFetcher.stubbedFeatureFlags[index].key, to: value)
     }
 
-    func assertFlags(values: Bool..., file: StaticString = #file, line: UInt = #line) {
-        for (i, value) in values.enumerate() {
+    func assertFlags(_ values: Bool..., file: StaticString = #file, line: UInt = #line) {
+        for (i, value) in values.enumerated() {
             XCTAssertEqual(value, persistedFeatureFlags()[i].value, file: file, line: line)
         }
     }

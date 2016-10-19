@@ -19,9 +19,9 @@ class AppFeatureFlags {
 
 extension AppFeatureFlags: FeatureFlagsReaderDelegate {
 
-    var sharedFeatureFlagFile: NSURL {
+    var sharedFeatureFlagFile: URL {
         return AppFeatureFlags.directory
-            .URLByAppendingPathComponent("featureFlags.plist")!
+            .appendingPathComponent("featureFlags.plist")
     }
 
     var features: [Feature] {
@@ -33,12 +33,12 @@ extension AppFeatureFlags: FeatureFlagsReaderDelegate {
 
 extension AppFeatureFlags {
 
-    private static var directory: NSURL {
-        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+    fileprivate static var directory: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
-    private func createDirectory() {
+    fileprivate func createDirectory() {
         let directory = AppFeatureFlags.directory
-        _ = try? NSFileManager.defaultManager().createDirectoryAtURL(directory, withIntermediateDirectories: true, attributes: nil)
+        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true, attributes: nil)
     }
 }

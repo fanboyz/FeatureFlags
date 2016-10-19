@@ -30,16 +30,16 @@ class FeatureFlagFetcherTests: XCTestCase {
     // MARK: - Helpers
     
     func loadValidFeatureFlagFetcher() {
-        let file = NSBundle(forClass: FeatureFlagFetcherTests.self).URLForResource("TestFeatureFlags", withExtension: "plist")!
+        let file = Bundle(for: FeatureFlagFetcherTests.self).url(forResource: "TestFeatureFlags", withExtension: "plist")!
         fetcher = PlistFeatureFlagFetcher(file: file)
     }
     
     func loadNoFileFeatureFlagFetcher() {
-        fetcher = PlistFeatureFlagFetcher(file: NSURL(fileURLWithPath: "hi"))
+        fetcher = PlistFeatureFlagFetcher(file: URL(fileURLWithPath: "hi"))
     }
     
     func loadPartiallyValidFeatureFlagFetcher() {
-        let file = NSBundle(forClass: FeatureFlagFetcherTests.self).URLForResource("TestPartialFeatureFlags", withExtension: "plist")!
+        let file = Bundle(for: FeatureFlagFetcherTests.self).url(forResource: "TestPartialFeatureFlags", withExtension: "plist")!
         fetcher = PlistFeatureFlagFetcher(file: file)
     }
     

@@ -6,7 +6,7 @@ class PlistFeatureFlagPersisterTests: XCTestCase {
     
     var persister: PlistFeatureFlagPersister!
     var fetcher: PlistFeatureFlagFetcher!
-    let file = NSURL(fileURLWithPath: NSTemporaryDirectory() + "flags")
+    let file = URL(fileURLWithPath: NSTemporaryDirectory() + "flags")
     
     override func setUp() {
         super.setUp()
@@ -15,7 +15,7 @@ class PlistFeatureFlagPersisterTests: XCTestCase {
     }
     
     override func tearDown() {
-        _ = try? NSFileManager.defaultManager().removeItemAtURL(file)
+        try? FileManager.default.removeItem(at: file)
         super.tearDown()
     }
     

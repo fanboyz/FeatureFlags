@@ -4,7 +4,7 @@ import UIKit
 
 public class FeatureFlagsUI {
 
-    public static func launch(sharedFeatureFlagFile file: NSURL) -> UIViewController {
+    public static func launch(sharedFeatureFlagFile file: URL) -> UIViewController {
         let viewController = FeatureFlagsViewController()
         viewController.featureFlagsWriter = FeatureFlagsWriter(sharedFeatureFlagFile: file)
         return viewController

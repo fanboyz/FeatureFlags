@@ -3,26 +3,26 @@ import Foundation
 
 class PlistFeatureFlagFetcher: FeatureFlagFetcher {
     
-    private let file: NSURL
+    private let file: URL
     
-    init(file: NSURL) {
+    init(file: URL) {
         self.file = file
     }
     
     func fetch() -> [FeatureFlag] {
-        guard let array = NSArray(contentsOfURL: file) else { return [] }
+        guard let array = NSArray(contentsOf: file) else { return [] }
         return array.flatMap(toDictionary)
                     .flatMap(toFeatureFlag)
     }
     
-    private func toDictionary(object: AnyObject) -> [String: AnyObject]? {
-        return object as? [String: AnyObject]
+    private func toDictionary(_ object: Any) -> [String: Any]? {
+        return object as? [String: Any]
     }
     
-    private func toFeatureFlag(dictionary: [String: AnyObject]) -> FeatureFlag? {
+    private func toFeatureFlag(_ dictionary: [String: Any]) -> FeatureFlag? {
         guard let key = dictionary["key"] as? String,
-                  name = dictionary["name"] as? String,
-                  value = dictionary["value"] as? NSNumber else {
+              let name = dictionary["name"] as? String,
+              let value = dictionary["value"] as? NSNumber else {
             return nil
         }
         return FeatureFlag(key: key, name: name, value: value.boolValue)

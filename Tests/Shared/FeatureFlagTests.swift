@@ -25,7 +25,7 @@ class FeatureFlagTests: XCTestCase {
     // MARK: - Helpers
     
     func create(
-        key key: String = "key",
+        key: String = "key",
         name: String = "name",
         value: Bool = false
     ) -> FeatureFlag {

@@ -2,5 +2,5 @@
 import Foundation
 
 protocol FeatureFlagPersister {
-    func persist(featureFlags: [FeatureFlag])
+    func persist(_ featureFlags: [FeatureFlag])
 }

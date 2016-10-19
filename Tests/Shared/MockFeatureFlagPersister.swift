@@ -6,7 +6,7 @@ class MockFeatureFlagPersister: FeatureFlagPersister {
     
     var didPersist = false
     var invokedFeatureFlags: [FeatureFlag]?
-    func persist(featureFlags: [FeatureFlag]) {
+    func persist(_ featureFlags: [FeatureFlag]) {
         didPersist = true
         invokedFeatureFlags = featureFlags
     }

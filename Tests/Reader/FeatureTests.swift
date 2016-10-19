@@ -21,9 +21,9 @@ class FeatureTests: XCTestCase {
     // MARK: - Helpers
     
     func create(
-        key key: String = "key",
-            name: String = "name"
-        ) -> Feature {
+        key: String = "key",
+        name: String = "name"
+    ) -> Feature {
         return Feature(key: key, name: name)
     }
 }

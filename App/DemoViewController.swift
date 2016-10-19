@@ -6,10 +6,10 @@ class DemoViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let isExampleFeatureOn = AppFeatureFlags.instance.isExampleFeatureOn
         label.text = isExampleFeatureOn ? "On" : "Off"
-        view.backgroundColor = isExampleFeatureOn ? .blueColor() : .greenColor()
+        view.backgroundColor = isExampleFeatureOn ? .blue : .green
     }
 }

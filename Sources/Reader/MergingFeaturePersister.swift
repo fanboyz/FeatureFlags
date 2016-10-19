@@ -11,11 +11,11 @@ class MergingFeaturePersister {
         self.persister = persister
     }
     
-    func persist(features: [Feature]) {
+    func persist(_ features: [Feature]) {
         persister.persist(features.map(toFeatureFlag))
     }
     
-    private func toFeatureFlag(feature: Feature) -> FeatureFlag {
+    private func toFeatureFlag(_ feature: Feature) -> FeatureFlag {
         let oldFeatures = fetcher.fetch()
         var value = false
         if let result = oldFeatures.findFirst(matching(feature)) {
@@ -24,7 +24,7 @@ class MergingFeaturePersister {
         return FeatureFlag(key: feature.key, name: feature.name, value: value)
     }
     
-    private func matching(feature: Feature) -> FeatureFlag -> Bool {
+    private func matching(_ feature: Feature) -> (FeatureFlag) -> Bool {
         return { featureFlag in
             feature.key == featureFlag.key
         }
@@ -33,8 +33,8 @@ class MergingFeaturePersister {
 
 extension Array {
     
-    private func findFirst(@noescape matching: (Element) -> Bool) -> Element? {
-        if let index = indexOf(matching) {
+    fileprivate func findFirst(_ matching: (Element) -> Bool) -> Element? {
+        if let index = index(where: matching) {
             return self[index]
         }
         return nil

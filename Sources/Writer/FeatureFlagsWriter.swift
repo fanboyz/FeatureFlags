@@ -7,7 +7,7 @@ public class FeatureFlagsWriter {
     let fetcher: FeatureFlagFetcher
     let persister: FeatureFlagPersister
 
-    public convenience init(sharedFeatureFlagFile: NSURL) {
+    public convenience init(sharedFeatureFlagFile: URL) {
         self.init(
             fetcher: PlistFeatureFlagFetcher(file: sharedFeatureFlagFile),
             persister: PlistFeatureFlagPersister(file: sharedFeatureFlagFile)
@@ -28,7 +28,7 @@ public class FeatureFlagsWriter {
         return fetcher.fetch()
     }
 
-    private func changing(key: String, to value: Bool) -> (FeatureFlag) -> (FeatureFlag) {
+    private func changing(_ key: String, to value: Bool) -> (FeatureFlag) -> (FeatureFlag) {
         return { flag in
             var flag = flag
             if flag.key == key {
@@ -38,7 +38,7 @@ public class FeatureFlagsWriter {
         }
     }
 
-    private func persist(featureFlags: [FeatureFlag]) {
+    private func persist(_ featureFlags: [FeatureFlag]) {
         persister.persist(featureFlags)
     }
 }
