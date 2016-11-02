@@ -31,8 +31,7 @@ class PlistFeatureFlagPersisterTests: XCTestCase {
     func featureFlags() -> [FeatureFlag] {
         return [
             FeatureFlag(key: "aKey", name: "aName", value: true),
-            FeatureFlag(key: "bKey", name: "bName", value: false, defaultValue: true),
-            FeatureFlag(key: "bKey", name: "bName", value: true, defaultValue: true)
+            FeatureFlag(key: "bKey", name: "bName", value: false)
         ]
     }
 }

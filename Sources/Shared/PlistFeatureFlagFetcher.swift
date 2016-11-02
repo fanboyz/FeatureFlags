@@ -25,12 +25,6 @@ class PlistFeatureFlagFetcher: FeatureFlagFetcher {
               let value = dictionary["value"] as? NSNumber else {
             return nil
         }
-        let defaultValue = getDefaultValue(from: dictionary)
-        return FeatureFlag(key: key, name: name, value: value.boolValue, defaultValue: defaultValue)
-    }
-
-    private func getDefaultValue(from dictionary: [String: Any]) -> Bool {
-        let defaultValue = dictionary["defaultValue"] as? NSNumber
-        return defaultValue?.boolValue ?? false
+        return FeatureFlag(key: key, name: name, value: value.boolValue)
     }
 }

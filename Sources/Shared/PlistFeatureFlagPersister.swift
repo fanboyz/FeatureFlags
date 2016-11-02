@@ -19,8 +19,7 @@ class PlistFeatureFlagPersister: FeatureFlagPersister {
         return [
             "key": feature.key,
             "name": feature.name,
-            "value": feature.value,
-            "defaultValue": feature.defaultValue
+            "value": feature.value
         ]
     }
 }

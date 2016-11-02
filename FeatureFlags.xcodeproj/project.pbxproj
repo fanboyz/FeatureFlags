@@ -41,7 +41,6 @@
 		5A2E5A3D1D6AF265006AE99A /* PlistFeatureFlagPersisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E5A2E1D6AF238006AE99A /* PlistFeatureFlagPersisterTests.swift */; };
 		5A2E5A4C1D6AF2B5006AE99A /* TestFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4A1D6AF2AF006AE99A /* TestFeatureFlags.plist */; };
 		5A2E5A4D1D6AF2B5006AE99A /* TestPartialFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E5A4B1D6AF2AF006AE99A /* TestPartialFeatureFlags.plist */; };
-		5A306EC61DCA299100352A1E /* TestNoDefaultValueFeatureFlags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A306EC51DCA299100352A1E /* TestNoDefaultValueFeatureFlags.plist */; };
 		5A4477921DA27AB5003F56CF /* FeatureFlagsWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477911DA27AB5003F56CF /* FeatureFlagsWriter.swift */; };
 		5A4477951DA27AE1003F56CF /* FeatureFlagsWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4477941DA27AE1003F56CF /* FeatureFlagsWriterTests.swift */; };
 		5A83270E1D65E88F00D21D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A83270D1D65E88F00D21D95 /* AppDelegate.swift */; };
@@ -120,7 +119,6 @@
 		5A2E5A611D6AFF48006AE99A /* FeatureFlagsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsUI.swift; sourceTree = "<group>"; };
 		5A2E5A631D6B0033006AE99A /* FeatureFlagsUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsUITests.swift; sourceTree = "<group>"; };
 		5A2E5A651D6B087B006AE99A /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
-		5A306EC51DCA299100352A1E /* TestNoDefaultValueFeatureFlags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TestNoDefaultValueFeatureFlags.plist; sourceTree = "<group>"; };
 		5A4477911DA27AB5003F56CF /* FeatureFlagsWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsWriter.swift; sourceTree = "<group>"; };
 		5A4477941DA27AE1003F56CF /* FeatureFlagsWriterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlagsWriterTests.swift; sourceTree = "<group>"; };
 		5A83270B1D65E88F00D21D95 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				5A2E5A4A1D6AF2AF006AE99A /* TestFeatureFlags.plist */,
-				5A306EC51DCA299100352A1E /* TestNoDefaultValueFeatureFlags.plist */,
 				5A2E5A4B1D6AF2AF006AE99A /* TestPartialFeatureFlags.plist */,
 				5A2E5A431D6AF2AF006AE99A /* Info.plist */,
 			);
@@ -483,7 +480,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A306EC61DCA299100352A1E /* TestNoDefaultValueFeatureFlags.plist in Resources */,
 				5A2E5A4C1D6AF2B5006AE99A /* TestFeatureFlags.plist in Resources */,
 				5A2E5A4D1D6AF2B5006AE99A /* TestPartialFeatureFlags.plist in Resources */,
 			);
