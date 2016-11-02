@@ -9,14 +9,14 @@ class FlagValueFetcher {
         self.fetcher = fetcher
     }
     
-    func fetchValue(forFlag flag: String) -> Bool? {
+    func fetchValue(forKey key: String) -> Bool? {
         let features = fetcher.fetch()
-        return features.filter(matching(flag)).first?.value
+        return features.filter(matching(key)).first?.value
     }
     
-    private func matching(_ flag: String) -> (FeatureFlag) -> Bool {
+    private func matching(_ key: String) -> (FeatureFlag) -> Bool {
         return { feature in
-            feature.key == flag
+            feature.key == key
         }
     }
 }

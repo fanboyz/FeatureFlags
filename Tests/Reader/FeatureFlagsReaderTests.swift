@@ -5,6 +5,9 @@ import XCTest
 class FeatureFlagsReaderTests: XCTestCase {
     
     var reader: FeatureFlagsReader!
+    let feature1 = Feature(key: "feature1", name: "awesome feature!")
+    let feature2 = Feature(key: "feature2", name: "below average feature")
+    let nonExistentFeature = Feature(key: "", name: "")
     
     override func setUp() {
         super.setUp()
@@ -17,25 +20,25 @@ class FeatureFlagsReaderTests: XCTestCase {
     func test_init_shouldPreserverExistingValues() {
         turnFirstFeatureOn()
         reader = FeatureFlagsReader(delegate: self)
-        XCTAssert(reader.value(forFlag: "feature1"))
-        XCTAssertFalse(reader.value(forFlag: "feature2"))
+        XCTAssert(reader.value(for: feature1))
+        XCTAssertFalse(reader.value(for: feature2))
     }
     
-    // MARK: - value(forFlag:)
+    // MARK: - value(for:)
     
     func test_valueForFlag_shouldGetValues() {
-        XCTAssertFalse(reader.value(forFlag: "feature1"))
-        XCTAssertFalse(reader.value(forFlag: "feature2"))
+        XCTAssertFalse(reader.value(for: feature1))
+        XCTAssertFalse(reader.value(for: feature2))
     }
     
     func test_valueForFlag_shouldBeFalse_whenNoFeature() {
-        XCTAssertFalse(reader.value(forFlag: "nonexistent"))
+        XCTAssertFalse(reader.value(for: nonExistentFeature))
     }
     
     func test_valueForFlag_shouldGetTrueValue() {
         turnFirstFeatureOn()
-        XCTAssert(reader.value(forFlag: "feature1"))
-        XCTAssertFalse(reader.value(forFlag: "feature2"))
+        XCTAssert(reader.value(for: feature1))
+        XCTAssertFalse(reader.value(for: feature2))
     }
     
     // MARK: - Helpers
@@ -61,8 +64,8 @@ extension FeatureFlagsReaderTests: FeatureFlagsReaderDelegate {
     
     var features: [Feature] {
         return [
-            Feature(key: "feature1", name: "awesome feature!"),
-            Feature(key: "feature2", name: "below average feature")
+            feature1,
+            feature2
         ]
     }
 }

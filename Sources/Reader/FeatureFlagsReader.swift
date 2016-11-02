@@ -19,7 +19,7 @@ public class FeatureFlagsReader {
         merger.persist(delegate.features)
     }
     
-    public func value(forFlag flag: String) -> Bool {
-        return flagFetcher.fetchValue(forFlag: flag) ?? false
+    public func value(for feature: Feature) -> Bool {
+        return flagFetcher.fetchValue(forKey: feature.key) ?? false
     }
 }
