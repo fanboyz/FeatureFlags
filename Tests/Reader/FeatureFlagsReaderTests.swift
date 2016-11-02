@@ -26,16 +26,16 @@ class FeatureFlagsReaderTests: XCTestCase {
     
     // MARK: - value(for:)
     
-    func test_valueForFlag_shouldGetValues() {
+    func test_valueForKey_shouldGetValues() {
         XCTAssertFalse(reader.value(for: feature1))
         XCTAssertFalse(reader.value(for: feature2))
     }
     
-    func test_valueForFlag_shouldBeFalse_whenNoFeature() {
+    func test_valueForKey_shouldBeFalse_whenNoFeature() {
         XCTAssertFalse(reader.value(for: nonExistentFeature))
     }
     
-    func test_valueForFlag_shouldGetTrueValue() {
+    func test_valueForKey_shouldGetTrueValue() {
         turnFirstFeatureOn()
         XCTAssert(reader.value(for: feature1))
         XCTAssertFalse(reader.value(for: feature2))

@@ -12,31 +12,23 @@ class MergingFeaturePersister {
     }
     
     func persist(_ features: [Feature]) {
-        persister.persist(features.map(toFeatureFlag))
+        let flags = fetcher.fetch()
+        persister.persist(features.map(mergingFeatureFlag(with: flags)))
     }
     
-    private func toFeatureFlag(_ feature: Feature) -> FeatureFlag {
-        let oldFeatures = fetcher.fetch()
-        var value = false
-        if let result = oldFeatures.findFirst(matching(feature)) {
-            value = result.value
+    private func mergingFeatureFlag(with flags: [FeatureFlag]) -> (Feature) -> FeatureFlag {
+        return { [unowned self] feature in
+            var value = false
+            if let result = flags.first(where: self.matching(feature)) {
+                value = result.value
+            }
+            return FeatureFlag(key: feature.key, name: feature.name, value: value)
         }
-        return FeatureFlag(key: feature.key, name: feature.name, value: value)
     }
     
     private func matching(_ feature: Feature) -> (FeatureFlag) -> Bool {
         return { featureFlag in
             feature.key == featureFlag.key
         }
-    }
-}
-
-extension Array {
-    
-    fileprivate func findFirst(_ matching: (Element) -> Bool) -> Element? {
-        if let index = index(where: matching) {
-            return self[index]
-        }
-        return nil
     }
 }
