@@ -10,16 +10,11 @@ class FeatureFlagTests: XCTestCase {
         XCTAssertEqual(create(), create())
     }
     
-    func test_shouldNotBeEqual_whenKeysAreDiffernt() {
+    func test_shouldNotBeEqual_whenPropertiesAreDiffernt() {
         XCTAssertNotEqual(create(), create(key: "wrong"))
-    }
-    
-    func test_shouldNotBeEqual_whenNamesAreDiffernt() {
         XCTAssertNotEqual(create(), create(name: "wrong"))
-    }
-    
-    func test_shouldNotBeEqual_whenValuesAreDiffernt() {
         XCTAssertNotEqual(create(), create(value: true))
+        XCTAssertNotEqual(create(), create(defaultValue: true))
     }
     
     // MARK: - Helpers
@@ -27,8 +22,9 @@ class FeatureFlagTests: XCTestCase {
     func create(
         key: String = "key",
         name: String = "name",
-        value: Bool = false
+        value: Bool = false,
+        defaultValue: Bool = false
     ) -> FeatureFlag {
-        return FeatureFlag(key: key, name: name, value: value)
+        return FeatureFlag(key: key, name: name, value: value, defaultValue: defaultValue)
     }
 }

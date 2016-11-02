@@ -26,6 +26,11 @@ class FeatureFlagFetcherTests: XCTestCase {
         loadPartiallyValidFeatureFlagFetcher()
         XCTAssertEqual(fetcher.fetch(), expected())
     }
+
+    func test_fetch_shouldFetchFlagWithoutDefaultValue_andSetToFalse() {
+        loadNoDefaultValueFeatureFlagFetcher()
+        XCTAssertEqual(fetcher.fetch(), expectedNoDefaultValueFeatureFlags())
+    }
     
     // MARK: - Helpers
     
@@ -42,8 +47,20 @@ class FeatureFlagFetcherTests: XCTestCase {
         let file = Bundle(for: FeatureFlagFetcherTests.self).url(forResource: "TestPartialFeatureFlags", withExtension: "plist")!
         fetcher = PlistFeatureFlagFetcher(file: file)
     }
+
+    func loadNoDefaultValueFeatureFlagFetcher() {
+        let file = Bundle(for: FeatureFlagFetcherTests.self).url(forResource: "TestNoDefaultValueFeatureFlags", withExtension: "plist")!
+        fetcher = PlistFeatureFlagFetcher(file: file)
+    }
     
     func expected() -> [FeatureFlag] {
+        return [
+            FeatureFlag(key: "aKey", name: "aName", value: true),
+            FeatureFlag(key: "bKey", name: "bName", value: false, defaultValue: true)
+        ]
+    }
+
+    func expectedNoDefaultValueFeatureFlags() -> [FeatureFlag] {
         return [
             FeatureFlag(key: "aKey", name: "aName", value: true),
             FeatureFlag(key: "bKey", name: "bName", value: false)
