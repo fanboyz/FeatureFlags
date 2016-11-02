@@ -13,7 +13,7 @@ class AppFeatureFlags {
     }
 
     var isExampleFeatureOn: Bool {
-        return reader.value(forFlag: exampleFeature.key)
+        return reader.value(for: exampleFeature)
     }
 }
 
