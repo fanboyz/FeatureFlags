@@ -1,4 +1,6 @@
 
+#if os(iOS)
+
 import Foundation
 import UIKit
 
@@ -10,3 +12,5 @@ public class FeatureFlagsUI {
         return viewController
     }
 }
+
+#endif

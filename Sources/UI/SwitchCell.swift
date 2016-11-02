@@ -1,4 +1,6 @@
 
+#if os(iOS)
+
 import UIKit
 
 protocol SwitchCellDelegate: class {
@@ -25,3 +27,6 @@ class SwitchCell: UITableViewCell {
         delegate?.cell(self, didChangeValue: switchControl.isOn)
     }
 }
+
+
+#endif

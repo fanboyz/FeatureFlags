@@ -1,4 +1,6 @@
 
+#if os(iOS)
+
 import UIKit
 
 class FeatureFlagsViewController: UITableViewController {
@@ -69,3 +71,5 @@ extension FeatureFlagsViewController: SwitchCellDelegate {
         change(value: value, atIndex: indexPath.row)
     }
 }
+
+#endif

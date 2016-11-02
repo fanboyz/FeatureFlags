@@ -1,4 +1,6 @@
 
+#if os(iOS)
+
 import XCTest
 @testable import FeatureFlags
 
@@ -14,3 +16,5 @@ class FeatureFlagsUITests: XCTestCase {
         XCTAssertNotNil(viewController?.featureFlagsWriter)
     }
 }
+
+#endif
