@@ -18,7 +18,7 @@ class MergingFeaturePersister {
     
     private func mergingFeatureFlag(with flags: [FeatureFlag]) -> (Feature) -> FeatureFlag {
         return { [unowned self] feature in
-            var value = false
+            var value = feature.defaultValue
             if let result = flags.first(where: self.matching(feature)) {
                 value = result.value
             }

@@ -16,10 +16,15 @@ class MergingFeaturePersisterTests: XCTestCase {
     }
     
     // MARK: - persist
-    
-    func test_persist_shouldPersistFeaturesFlags_andDefaultToFalse_whenNoExistingFeatures() {
+
+    func test_persist_shouldPersistFeaturesFlags_whenNoExistingFeatures() {
         persister.persist([feature1()])
         XCTAssertEqual(mockedPersister.invokedFeatureFlags!, [featureFlag1()])
+    }
+
+    func test_persist_shouldSetDefaultValue_whenMergingNewFeature() {
+        persister.persist([defaultTrueFeature()])
+        XCTAssertEqual(mockedPersister.invokedFeatureFlags!, [defaultTrueFeatureFlag()])
     }
     
     func test_persist_shouldNotPersistOldFeatures() {
@@ -47,6 +52,10 @@ class MergingFeaturePersisterTests: XCTestCase {
     func trueFeature() -> Feature {
         return Feature(key: "true", name: "true")
     }
+
+    func defaultTrueFeature() -> Feature {
+        return Feature(key: "defaultTrue", name: "defaultTrue", defaultValue: true)
+    }
     
     func featureFlag1() -> FeatureFlag {
         return FeatureFlag(key: "feature1", name: "feature1", value: false)
@@ -58,5 +67,9 @@ class MergingFeaturePersisterTests: XCTestCase {
     
     func trueFeatureFlag() -> FeatureFlag {
         return FeatureFlag(key: "true", name: "true", value: true)
+    }
+
+    func defaultTrueFeatureFlag() -> FeatureFlag {
+        return FeatureFlag(key: "defaultTrue", name: "defaultTrue", value: true)
     }
 }
