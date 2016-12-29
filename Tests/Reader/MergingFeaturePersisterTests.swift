@@ -33,7 +33,7 @@ class MergingFeaturePersisterTests: XCTestCase {
         XCTAssert(mockedPersister.invokedFeatureFlags!.isEmpty)
     }
     
-    func test_persist_shouldPersistNewFeatures_andPreserverTheirValues() {
+    func test_persist_shouldPersistNewFeatures_andPreserveTheirValues() {
         mockedFetcher.stubbedFeatureFlags = [featureFlag1(), trueFeatureFlag()]
         persister.persist([feature1(), trueFeature()])
         XCTAssertEqual(mockedPersister.invokedFeatureFlags!, [featureFlag1(), trueFeatureFlag()])
